@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Test of WebSocket Client</title>
+
+    <!-- jQuery -->
+    <script src="../public/js/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Test -->
+    <script type="text/javascript">
+        /**
+         * Change UI status
+         * @param status
+         * @param send
+         * @param connect
+         * @param disconnect
+         * @param text
+         * @param disable
+         */
+        function changeStatus(status, send, connect, disconnect, text, disable) {
+            status.text(text);
+            send.attr('disabled', disable);
+            connect.attr('disabled', !disable);
+            disconnect.attr('disabled', disable);
+        }
+
+        $(function(){
+            var status = $('#status');
+            var connect = $('#connect');
+            var disconnect = $('#disconnect');
+            var input = $('#input');
+            var send = $('#send');
+            var output = $('#output');
+
+            changeStatus(status, send, connect, disconnect, "Disconnected", true);
+
+            var wsSocket = null;
+
+            // Connect Button Event
+            connect.on('click', function(){
+                // Disable connect
+                connect.attr('disabled', true);
+
+                // open web socket
+                wsSocket = new WebSocket("ws://localhost:800");
+
+                // On open a web socket
+                wsSocket.addEventListener('open', function(){
+                    changeStatus(status, send, connect, disconnect, "Connected", false);
+                });
+
+                // On message
+                wsSocket.addEventListener('message', function(event){
+                    output.html(output.html()+" <br/> "+event.data);
+                });
+
+                // On error
+                wsSocket.addEventListener('error', function(err){
+                    console.info("Error: ", err);
+                });
+
+                // On close
+                wsSocket.addEventListener('close', function(){
+                    console.info("Closed");
+                });
+            });
+
+            // Send message Button Event
+            send.on('click', function(){
+                var text = input.val();
+
+                if(!text) {
+                    alert("Input some thing first");
+                    return;
+                }
+
+                wsSocket.send(text);
+                input.val("");
+            });
+
+            // Disconnect Button Event
+            disconnect.on('click', function(){
+                changeStatus(status, send, connect, disconnect, "Disconnected", true);
+
+                wsSocket.close();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p id="status"></p>
+    <p>
+        <button type="button" class="btn" id="connect">Connect</button> &nbsp;&nbsp;
+        <button type="button" class="btn" id="disconnect">Disconnect</button>
+    </p>
+    <p>
+        Input: <input type="text" id="input" /> &nbsp;&nbsp;
+        <button type="button" class="btn" id="send">Send</button>
+    </p>
+    <p>
+        Output: <span id="output"></span>
+    </p>
+</body>
+</html>

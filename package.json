@@ -1,0 +1,35 @@
+{
+  "name": "NodeJsDemo",
+  "description": "Practice Node.js",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "hbs": "3.x",
+    "express-session": "latest",
+    "compression": "latest",
+    "mongoose": "3.8.x",
+    "formidable": "latest",
+    "moment": "latest",
+    "underscore": "latest",
+    "cheerio": "latest",
+    "feed": "latest",
+    "del": "latest"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-cache": "latest",
+    "gulp-cached": "latest",
+    "gulp-concat": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-jshint": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-notify": "latest",
+    "gulp-remember": "latest",
+    "gulp-rename": "latest",
+    "gulp-replace": "latest",
+    "gulp-uglify": "latest",
+    "imagemin-pngquant": "latest"
+  }
+}

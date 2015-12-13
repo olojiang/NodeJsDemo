@@ -1,0 +1,4 @@
+* Use NODE_PATH to point to global installation
+NODE_PATH=/home/user/lib:/home/lib
+
+NODE_PATH=C:\Users\Hunter\AppData\Roaming\npm\node_modules
