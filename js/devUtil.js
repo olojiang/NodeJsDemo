@@ -5,7 +5,7 @@
 
 var util = require('util');
 
-var pageItem = require('pageItem');
+var pageItem = require('./pageItem');
 var pages = pageItem.items;
 
 /*

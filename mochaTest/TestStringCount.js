@@ -36,10 +36,6 @@ describe("Test to find string in file", function(){
         //var regex = /pussy/g;
         //var dirPath = 'f:\\ToDel\\PP_Novel_CN\\ToRead';
         var dirPath = 'f:\\ToDel\\H\\S\\重生女强玄幻小说';
-        //var dirPath = 'f:\\ToDel\\PP_Novel_CN\\Multiple\\Novel';
-        //var dirPath = 'f:\\ToDel\\PP_Novel_CN\\Novel03';
-        //var dirPath = 'f:\\ToDel\\PP_Novel_EN\\xNovel Sex Stories';
-        //var dirPath = 'f:\\ToDel\\PP_Novel_EN\\Storiesonline Sex Stories';
         //var targetDir = 'f:\\ToDel\\PP_Novel_CN\\ToRead';
         var minMatchLength = 30;
         var minSize = 70000;

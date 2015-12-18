@@ -1,6 +1,7 @@
 /**
  * Created by Hunter on 3/26/2015.
  */
+"use strict";
 
 // exports is the object, when we use it.
 

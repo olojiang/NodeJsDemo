@@ -55,10 +55,8 @@ var jsonTest = module.exports = {
     getJson: function(file) {
         var path = '../json/'+file+'.json';
         console.info("read path:", path);
-        if(this.test) {
-            require.uncache(path);
-            return require(path);
-        }
+        require.uncache(path);
+        return require(path);
     }
 };
 

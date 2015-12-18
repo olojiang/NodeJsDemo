@@ -1,6 +1,8 @@
 /**
  * Created by Hunter on 3/28/2015.
  */
+"use strict";
+
 var _ = require('underscore');
 
 exports.countNumber = function(list, firstField, secondField){

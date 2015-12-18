@@ -14,9 +14,16 @@
     "underscore": "latest",
     "cheerio": "latest",
     "feed": "latest",
-    "del": "latest"
+    "del": "latest",
+    "iconv-lite": "latest"
   },
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-cache": "latest",
@@ -30,6 +37,13 @@
     "gulp-rename": "latest",
     "gulp-replace": "latest",
     "gulp-uglify": "latest",
-    "imagemin-pngquant": "latest"
+    "imagemin-pngquant": "latest",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-mocha": "^0.2.1",
+    "mocha": "^2.3.4",
+    "requirejs": "^2.1.22"
   }
 }
