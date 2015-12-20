@@ -16,6 +16,7 @@
 * `http` - http && https operation
 * `net` - socket operation
 * `mongodb` - mongoDB operation
+* `grunt` - play with different frequently used grunt plugins
 
 ###### Play (Under dir `test`)
 * `Async`

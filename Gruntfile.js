@@ -2,6 +2,12 @@
 
 module.exports = function(grunt) {
 
+    // require it at the top and pass in the grunt instance
+    require('time-grunt')(grunt);
+
+    // Replace all thing like: grunt.loadNpmTasks('grunt-contrib-uglify');
+    require('load-grunt-tasks')(grunt);
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -48,8 +54,14 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
+            jshint: {
+                files: ['<%= jshint.files %>'],
+                tasks: ['jshint']
+            },
+            less: {
+                files: ['less/test.less'],
+                tasks: ['less']
+            }
         },
         cssmin: {
             compress: {
@@ -60,27 +72,80 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        less: {
+            dist: {
+                files: {
+                    'target/testLess.css': 'less/test.less'
+                }
+            }
+        },
+        copy: {
+            json:{
+                files: [
+                    // includes files within path
+                    {expand: true, src: ['json/*'], dest: 'target/', flatten: true, filter: ''}
+                ]
+            }
+        },
+        clean: ['target/json', 'target/*.css', 'target/*.map'],
+        autoprefixer: {
+            options: {
+                // browsers: ['last 2 versions', 'ie 8', 'ie 9']
+                browsers: ['last 1 version']
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    src: 'target/*.css',
+                    dest: ''
+                }]
+            }
+        },
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'img',
+                    src: '{,*/}*.{png,jpg,jpeg,gif}',
+                    dest: 'target/img'
+                }]
+            }
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    // Load the plugin that provides the "concat" task.
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
-    // Load the plugin that provides the "jshint" task.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-
-    // Load the plugin that provides the "watch" task.
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
-    // Load the plugin that provides the "cssmin" task.
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    //// Load the plugin that provides the "uglify" task.
+    //grunt.loadNpmTasks('grunt-contrib-uglify');
+    //
+    //// Load the plugin that provides the "concat" task.
+    //grunt.loadNpmTasks('grunt-contrib-concat');
+    //
+    //// Load the plugin that provides the "jshint" task.
+    //grunt.loadNpmTasks('grunt-contrib-jshint');
+    //
+    //// Load the plugin that provides the "watch" task.
+    //grunt.loadNpmTasks('grunt-contrib-watch');
+    //
+    //// Load the plugin that provides the "cssmin" task.
+    //grunt.loadNpmTasks('grunt-contrib-cssmin');
+    //
+    //// Load the plugin that provides the "less" task.
+    //grunt.loadNpmTasks('grunt-contrib-less');
+    //
+    //// Load the plugin that provides the "copy" task.
+    //grunt.loadNpmTasks('grunt-contrib-copy');
+    //
+    //// Load the plugin that provides the "clean" task.
+    //grunt.loadNpmTasks('grunt-contrib-clean');
+    //
+    //// Load the plugin that provides the "autoprefixer" task.
+    //grunt.loadNpmTasks('grunt-autoprefixer');
+    //
+    //// Load the plugin that provides the "imagemin" task.
+    //grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // Default task(s).
     grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'watch']);
-
 
     // A very basic default task.
     //grunt.registerTask('default', 'Log some stuff.', function() {
