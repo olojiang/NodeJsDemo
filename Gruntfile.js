@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     // Replace all thing like: grunt.loadNpmTasks('grunt-contrib-uglify');
-    require('load-grunt-tasks')(grunt);
+    //require('load-grunt-tasks')(grunt);
 
     // Project configuration.
     grunt.initConfig({
@@ -111,41 +111,54 @@ module.exports = function(grunt) {
                     dest: 'target/img'
                 }]
             }
+        },
+        concurrent: {
+            css: ['less', 'cssmin'],
+            js: ['concat', 'uglify']
         }
     });
 
-    //// Load the plugin that provides the "uglify" task.
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
-    //
-    //// Load the plugin that provides the "concat" task.
-    //grunt.loadNpmTasks('grunt-contrib-concat');
-    //
-    //// Load the plugin that provides the "jshint" task.
-    //grunt.loadNpmTasks('grunt-contrib-jshint');
-    //
-    //// Load the plugin that provides the "watch" task.
-    //grunt.loadNpmTasks('grunt-contrib-watch');
-    //
-    //// Load the plugin that provides the "cssmin" task.
-    //grunt.loadNpmTasks('grunt-contrib-cssmin');
-    //
-    //// Load the plugin that provides the "less" task.
-    //grunt.loadNpmTasks('grunt-contrib-less');
-    //
-    //// Load the plugin that provides the "copy" task.
-    //grunt.loadNpmTasks('grunt-contrib-copy');
-    //
-    //// Load the plugin that provides the "clean" task.
-    //grunt.loadNpmTasks('grunt-contrib-clean');
-    //
-    //// Load the plugin that provides the "autoprefixer" task.
-    //grunt.loadNpmTasks('grunt-autoprefixer');
-    //
-    //// Load the plugin that provides the "imagemin" task.
-    //grunt.loadNpmTasks('grunt-contrib-imagemin');
+    // Load the plugin that provides the "uglify" task.
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
+    // Load the plugin that provides the "concat" task.
+    grunt.loadNpmTasks('grunt-contrib-concat');
+
+    // Load the plugin that provides the "jshint" task.
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    // Load the plugin that provides the "watch" task.
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // Load the plugin that provides the "cssmin" task.
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+    // Load the plugin that provides the "less" task.
+    grunt.loadNpmTasks('grunt-contrib-less');
+
+    // Load the plugin that provides the "copy" task.
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
+    // Load the plugin that provides the "clean" task.
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
+    // Load the plugin that provides the "autoprefixer" task.
+    grunt.loadNpmTasks('grunt-autoprefixer');
+
+    // Load the plugin that provides the "imagemin" task.
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+    // Load the plugin that provides the "concurrent" task.
+    grunt.loadNpmTasks('grunt-concurrent');
+
+    // Load the plugin that provides the "newer" task.
+    grunt.loadNpmTasks('grunt-newer');
 
     // Default task(s).
     grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'watch']);
+
+    // Call concat to do incremental
+    grunt.registerTask('jshintn', ['newer:jshint']);
 
     // A very basic default task.
     //grunt.registerTask('default', 'Log some stuff.', function() {
